@@ -4,29 +4,36 @@
 
 ---
 
-## 📸 Interface Preview & Design Inspiration
+## 📸 Complete Screenshots & Visual Evidence Showcase
 
-The workspace is inspired by cozy, sunlit classical libraries and aesthetic virtual study spaces:
+All project screenshots are archived in the [`/assets`](./assets/) directory and showcased below:
 
-![FocusFlow Workspace Preview](assets/app-preview.png)
-
-* **Cinematic Backdrop**: Warm sunlight streaming through vintage arched library windows with subtle floating dust particles.
-* **Glassmorphism Aesthetic**: Frosted glass cards with translucent dark layers (`backdrop-filter: blur(20px)`), subtle glowing borders, and vibrant purple highlights (`#a855f7`).
+| # | File Name | Type | Description |
+| :-: | :--- | :--- | :--- |
+| 1 | [`app-preview.png`](./assets/app-preview.png) | 🖥️ App Preview | Full Liquid Glass Workspace Interface & Deep Space Scene |
+| 2 | [`terminal-v1.png`](./assets/terminal-v1.png) | 💻 Terminal Log | **Version 1.0.0** Git Push Verification |
+| 3 | [`terminal-v2.png`](./assets/terminal-v2.png) | 💻 Terminal Log | **Version 2.0.0** Git Push Verification (Audio & Tasks) |
+| 4 | [`terminal-v3.png`](./assets/terminal-v3.png) | 💻 Terminal Log | **Version 3.0.0** Git Push Verification (Stats & Dashboard) |
 
 ---
 
-## 📸 Version Push Screenshots (Git Terminal Evidence)
+### 🖥️ 1. Website Workspace Interface
+![FocusFlow Workspace Preview](./assets/app-preview.png)
 
-Here are the terminal verification screenshots showing incremental release commits pushed to GitHub:
+---
 
-### 🟢 Version 1: Core Timer
-![Version 1 Terminal Push](assets/terminal-v1.png)
+### 🟢 2. Version 1 Terminal Push Evidence
+![Version 1 Terminal Push](./assets/terminal-v1.png)
 
-### 🟡 Version 2: Music & Task List
-![Version 2 Terminal Push](assets/terminal-v2.png)
+---
 
-### 🟣 Version 3: Study Statistics & Dashboard
-![Version 3 Terminal Push](assets/terminal-v3.png)
+### 🟡 3. Version 2 Terminal Push Evidence
+![Version 2 Terminal Push](./assets/terminal-v2.png)
+
+---
+
+### 🟣 4. Version 3 Terminal Push Evidence
+![Version 3 Terminal Push](./assets/terminal-v3.png)
 
 ---
 
