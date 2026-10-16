@@ -164,37 +164,37 @@
     <!-- Bottom Control Dock -->
     <footer class="bottom-dock">
       
-      <!-- Card 1: Ambient Sound Control -->
-      <div class="dock-card glass-card">
+      <!-- Card 1: Focus Music & Sound Player (Upgraded) -->
+      <div class="dock-card glass-card dock-player-card" id="dock-player-card">
         <div class="card-header">
-          <div class="card-title-group">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3"></path>
-            </svg>
-            <span class="card-title">Brown Noise</span>
+          <div class="card-title-group" id="btn-open-sound-lab" title="Click to open Music & Sound Lab" style="cursor: pointer;">
+            <div class="audio-wave-bars" id="dock-equalizer">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+            <div class="dock-player-info">
+              <span class="card-title dock-track-title" id="dock-track-title">Midnight Study Session</span>
+              <span class="dock-track-category" id="dock-track-category">Lo-Fi Chillhop</span>
+            </div>
           </div>
-          <span class="sound-status-badge" id="sound-status-badge">Off</span>
+          <button class="sound-lab-pill-btn" id="btn-open-sound-lab-pill" title="Open Sound Lab">Sound Lab</button>
         </div>
         <div class="sound-control-row">
-          <button class="dock-btn-icon" id="btn-sound-toggle" title="Toggle Brown Noise">
-            <svg id="sound-icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="1" y1="1" x2="23" y2="23"></line>
-              <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
-              <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
+          <button class="dock-btn-icon" id="btn-sound-toggle" title="Play / Pause Audio">
+            <svg id="sound-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
-            <svg id="sound-icon-on" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
+            <svg id="sound-icon-on" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
             </svg>
           </button>
           <div class="slider-wrapper">
-            <input type="range" id="sound-volume-slider" min="0" max="100" value="50" class="custom-slider">
+            <input type="range" id="sound-volume-slider" min="0" max="100" value="55" class="custom-slider">
           </div>
-          <span class="volume-value" id="sound-volume-text">50%</span>
+          <span class="volume-value" id="sound-volume-text">55%</span>
         </div>
       </div>
 
@@ -333,9 +333,9 @@
     </div>
   </aside>
 
-  <!-- Multi-track Soundscapes Mixer Modal (V2) -->
+  <!-- Focus Music & Brainwave Sound Lab Modal (Upgraded) -->
   <div class="modal-backdrop hidden" id="mixer-modal">
-    <div class="modal-card glass-card mixer-card">
+    <div class="modal-card glass-card soundlab-card">
       <div class="modal-header">
         <div class="drawer-title-group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -343,62 +343,116 @@
             <circle cx="6" cy="18" r="3"></circle>
             <circle cx="18" cy="16" r="3"></circle>
           </svg>
-          <h3>Ambient Soundscapes & Mixer</h3>
+          <h3>Focus Sound & Music Lab</h3>
         </div>
         <button class="icon-button modal-close" id="btn-close-mixer">&times;</button>
       </div>
 
-      <div class="mixer-body">
+      <!-- Navigation Tabs inside Sound Lab -->
+      <div class="soundlab-nav">
+        <button class="soundlab-tab active" data-panel="panel-music">🎧 Study Music</button>
+        <button class="soundlab-tab" data-panel="panel-binaural">🧠 Binaural Beats</button>
+        <button class="soundlab-tab" data-panel="panel-ambient">🌿 Ambient Mixer</button>
+      </div>
+
+      <div class="soundlab-content">
         
-        <!-- Track 1: Brown Noise -->
-        <div class="mixer-track">
-          <div class="mixer-track-info">
-            <span class="mixer-track-name">🌊 Deep Brown Noise</span>
-            <label class="switch">
-              <input type="checkbox" class="mixer-track-toggle" data-track="brown">
-              <span class="slider round"></span>
-            </label>
+        <!-- Panel 1: Lo-Fi & Study Music -->
+        <div class="soundlab-panel" id="panel-music">
+          <div class="panel-desc">Relaxing, non-distracting instrumental lo-fi and piano for deep study flow.</div>
+          <div class="music-tracks-container" id="music-tracks-container">
+            <!-- Dynamically populated by audio.js -->
           </div>
-          <input type="range" class="mixer-volume-slider custom-slider" data-track="brown" min="0" max="100" value="50">
         </div>
 
-        <!-- Track 2: Gentle Rain -->
-        <div class="mixer-track">
-          <div class="mixer-track-info">
-            <span class="mixer-track-name">🌧️ Rainy Windowpane</span>
-            <label class="switch">
-              <input type="checkbox" class="mixer-track-toggle" data-track="rain">
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <input type="range" class="mixer-volume-slider custom-slider" data-track="rain" min="0" max="100" value="40">
-        </div>
-
-        <!-- Track 3: White Noise -->
-        <div class="mixer-track">
-          <div class="mixer-track-info">
-            <span class="mixer-track-name">💨 Pure White Noise</span>
-            <label class="switch">
-              <input type="checkbox" class="mixer-track-toggle" data-track="white">
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <input type="range" class="mixer-volume-slider custom-slider" data-track="white" min="0" max="100" value="30">
-        </div>
-
-        <!-- Track 4: Lofi Chillhop Beats -->
-        <div class="mixer-track lofi-track-card">
-          <div class="mixer-track-info">
-            <div class="lofi-title-box">
-              <span class="mixer-track-name">☕ Lofi Beats Player</span>
-              <p class="lofi-track-sub" id="lofi-track-title">Chillhop Beats — Midnight Study</p>
+        <!-- Panel 2: Scientific Binaural Beats -->
+        <div class="soundlab-panel hidden" id="panel-binaural">
+          <div class="panel-desc">Scientific frequencies for brainwave entrainment (best with headphones):</div>
+          <div class="binaural-grid">
+            <div class="binaural-card" data-binaural="alpha">
+              <div class="binaural-header">
+                <span class="binaural-title">Alpha Waves (10 Hz)</span>
+                <span class="binaural-status">Ready</span>
+              </div>
+              <p class="binaural-desc">Relaxed alertness, optimal memory consolidation & reading comprehension.</p>
             </div>
-            <div class="lofi-actions">
-              <button class="btn-lofi-ctrl" id="btn-lofi-play">Play</button>
-              <button class="btn-lofi-ctrl" id="btn-lofi-next" title="Next Song">⏭</button>
+            
+            <div class="binaural-card" data-binaural="beta">
+              <div class="binaural-header">
+                <span class="binaural-title">Beta Waves (18 Hz)</span>
+                <span class="binaural-status">Ready</span>
+              </div>
+              <p class="binaural-desc">High focus, complex logic, mathematics, coding, and problem-solving.</p>
+            </div>
+
+            <div class="binaural-card" data-binaural="theta">
+              <div class="binaural-header">
+                <span class="binaural-title">Theta Waves (6 Hz)</span>
+                <span class="binaural-status">Ready</span>
+              </div>
+              <p class="binaural-desc">Deep flow state, creative brainstorms, writing, and anxiety relief.</p>
+            </div>
+
+            <div class="binaural-card" data-binaural="solfeggio">
+              <div class="binaural-header">
+                <span class="binaural-title">528 Hz Solfeggio Tone</span>
+                <span class="binaural-status">Ready</span>
+              </div>
+              <p class="binaural-desc">Harmonic clarity frequency for clearing mental fog and tension.</p>
             </div>
           </div>
-          <input type="range" class="mixer-volume-slider custom-slider" data-track="lofi" min="0" max="100" value="50">
+        </div>
+
+        <!-- Panel 3: Ambient Sound Mixer -->
+        <div class="soundlab-panel hidden" id="panel-ambient">
+          <div class="panel-desc">Blend ambient noise layers on top of your study music:</div>
+          <div class="ambient-tracks-list">
+            
+            <div class="mixer-track">
+              <div class="mixer-track-info">
+                <span class="mixer-track-name">🌊 Deep Brown Noise (ADHD & Focus)</span>
+                <label class="switch">
+                  <input type="checkbox" class="ambient-track-toggle" data-track="brown">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <input type="range" class="ambient-slider custom-slider" data-track="brown" min="0" max="100" value="50">
+            </div>
+
+            <div class="mixer-track">
+              <div class="mixer-track-info">
+                <span class="mixer-track-name">🌧️ Rainy Windowpane</span>
+                <label class="switch">
+                  <input type="checkbox" class="ambient-track-toggle" data-track="rain">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <input type="range" class="ambient-slider custom-slider" data-track="rain" min="0" max="100" value="40">
+            </div>
+
+            <div class="mixer-track">
+              <div class="mixer-track-info">
+                <span class="mixer-track-name">🔥 Cozy Fireplace Crackle</span>
+                <label class="switch">
+                  <input type="checkbox" class="ambient-track-toggle" data-track="fire">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <input type="range" class="ambient-slider custom-slider" data-track="fire" min="0" max="100" value="35">
+            </div>
+
+            <div class="mixer-track">
+              <div class="mixer-track-info">
+                <span class="mixer-track-name">💨 Pure White Noise</span>
+                <label class="switch">
+                  <input type="checkbox" class="ambient-track-toggle" data-track="white">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <input type="range" class="ambient-slider custom-slider" data-track="white" min="0" max="100" value="30">
+            </div>
+
+          </div>
         </div>
 
       </div>

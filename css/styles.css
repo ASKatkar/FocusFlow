@@ -1543,3 +1543,304 @@ input:checked + .slider.round:before {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ===================================================================
+   Focus Music, Binaural Sound Lab & Equalizer Styles
+   =================================================================== */
+
+/* Dock Player Info & Animated Equalizer */
+.dock-player-card .card-header {
+  margin-bottom: 0.5rem;
+}
+
+.dock-player-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: 140px;
+}
+
+.dock-track-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dock-track-category {
+  font-size: 0.64rem;
+  color: #c084fc;
+  font-weight: 600;
+}
+
+/* Sound Lab Pill Button */
+.sound-lab-pill-btn {
+  background: rgba(168, 85, 247, 0.18);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
+  font-family: var(--font-main);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.sound-lab-pill-btn:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+}
+
+/* Animated 4-Bar Equalizer */
+.audio-wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 16px;
+  width: 16px;
+}
+
+.audio-wave-bars .bar {
+  flex: 1;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  height: 4px;
+  transition: height 0.2s ease;
+}
+
+.audio-wave-bars.animating .bar:nth-child(1) {
+  animation: eqPulse 0.8s ease-in-out infinite alternate;
+}
+.audio-wave-bars.animating .bar:nth-child(2) {
+  animation: eqPulse 0.6s ease-in-out infinite alternate 0.2s;
+}
+.audio-wave-bars.animating .bar:nth-child(3) {
+  animation: eqPulse 0.9s ease-in-out infinite alternate 0.4s;
+}
+.audio-wave-bars.animating .bar:nth-child(4) {
+  animation: eqPulse 0.7s ease-in-out infinite alternate 0.1s;
+}
+
+@keyframes eqPulse {
+  0% { height: 3px; }
+  100% { height: 16px; }
+}
+
+/* Sound Lab Modal */
+.soundlab-card {
+  width: 480px;
+  max-width: 95vw;
+}
+
+.soundlab-nav {
+  display: flex;
+  gap: 0.35rem;
+  background: rgba(10, 10, 15, 0.5);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.soundlab-tab {
+  flex: 1;
+  padding: 0.45rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+  font-size: 0.74rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.soundlab-tab:hover {
+  color: #fff;
+}
+
+.soundlab-tab.active {
+  background: var(--accent-gradient);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.45);
+}
+
+.soundlab-content {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+}
+
+.soundlab-content::-webkit-scrollbar {
+  width: 4px;
+}
+.soundlab-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.panel-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Music Tracks List */
+.music-tracks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.music-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.music-card-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateY(-1px);
+}
+
+.music-card-item.active {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+}
+
+.music-card-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  max-width: 75%;
+}
+
+.music-play-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.music-card-item.active .music-play-icon {
+  background: var(--accent-primary);
+}
+
+.music-card-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-card-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-card-desc {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-card-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  padding: 0.18rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+/* Binaural Beats Cards Grid */
+.binaural-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+.binaural-card {
+  background: rgba(15, 15, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.binaural-card:hover {
+  background: rgba(25, 20, 35, 0.8);
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+.binaural-card.active {
+  background: linear-gradient(135deg, rgba(35, 20, 50, 0.85) 0%, rgba(20, 15, 30, 0.9) 100%);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+}
+
+.binaural-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.binaural-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.binaural-status {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.binaural-card.active .binaural-status {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+}
+
+.binaural-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Ambient tracks list inside Lab */
+.ambient-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}

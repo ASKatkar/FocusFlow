@@ -47,6 +47,24 @@ FocusFlow was built and delivered in 3 progressive, feature-packed versions:
 | **`v2.0.0`** | **Audio & Tasks** | Multi-track ambient sound mixer (Brown, White, Rain noise), Lofi beats player, 6-theme environment switcher, interactive task checklist drawer, active focus pinning. | [`v2.0.0`](#version-200--ambient-soundscapes--focus-tasks) |
 | **`v3.0.0`** | **Analytics & Gamification** | Productivity analytics dashboard, daily study streaks, 7-day weekly activity bar chart, session history logger, dynamic XP & leveling system (`LVL 1` to `LVL 2+`). | [`v3.0.0`](#version-300--study-statistics--gamification) |
 
+## 🎧 Focus Music & Brainwave Sound Lab (Upgrade)
+
+The workspace includes a dedicated scientific audio suite engineered specifically for studying, reading, and deep concentration:
+
+* **🎶 Curated Lo-Fi & Study Piano Player**:
+  * *Midnight Study Session* — Mellow Rhodes & boom-bap rhythm for flow state.
+  * *Rain & Nostalgia Lofi* — Soft vinyl texture with relaxing acoustic keys.
+  * *Peaceful Study Piano Solo* — Gentle classical acoustic piano for writing and reading.
+  * *Late Night Coding Grooves* — Downtempo synth pads to prevent cognitive fatigue.
+  * *Coffee Shop Study Session* — Warm acoustic guitar and cozy cafe vibes.
+* **🧠 Scientific Binaural Beats Synthesizer (Web Audio API)**:
+  * **Alpha Waves (10 Hz)** — Relaxed alertness, optimal memory consolidation & reading comprehension.
+  * **Beta Waves (18 Hz)** — High focus, complex logic, mathematics, coding, and problem-solving.
+  * **Theta Waves (6 Hz)** — Deep flow state, creative brainstorms, writing, and anxiety relief.
+  * **528 Hz Solfeggio Tone** — Harmonic clarity frequency for clearing mental fog.
+* **📊 Animated Audio Equalizer**: Dynamic 4-bar glowing purple visualizer dancing in the dock player whenever audio is active.
+* **🌿 Layered Multi-Track Mixing**: Blend background ambient sounds (Brown Noise, Window Rain, Fireplace Crackle) concurrently on top of your study music!
+
 ---
 
 ## 📦 Detailed Version Feature Breakdown
