@@ -1,7 +1,7 @@
 /**
  * FocusFlow — Upgraded Focus Music & Brainwave Sound Lab
- * Features Lo-Fi Study Beats, Relaxing Piano, Scientific Binaural Beats
- * (Alpha, Beta, Theta waves), and Multi-Track Ambient Soundscapes.
+ * Features 10 Lo-Fi, Piano & Ambient Study Tracks, Scientific Binaural Beats
+ * (Alpha, Beta, Theta, Solfeggio frequencies), and Multi-Track Ambient Soundscapes.
  */
 
 class SoundEngine {
@@ -26,10 +26,10 @@ class SoundEngine {
       oscLeft: null,
       oscRight: null,
       gainNode: null,
-      bedNode: null
+      currentLabel: ''
     };
 
-    // Curated Focus & Study Music Library
+    // Expanded 10 Curated Focus & Study Music Tracks
     this.musicTracks = [
       {
         id: 'lofi-1',
@@ -65,6 +65,41 @@ class SoundEngine {
         category: 'Lo-Fi Chillhop',
         desc: 'Warm acoustic guitar chords with cozy cafe vibes',
         url: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=lofi-beat-chill-110255.mp3'
+      },
+      {
+        id: 'ambient-1',
+        title: 'Deep Cosmos Meditation & Flow',
+        category: 'Ambient Flow',
+        desc: 'Ethereal cosmic pads for uninterrupted deep problem-solving',
+        url: 'https://cdn.pixabay.com/download/audio/2021/09/06/audio_82c6ae1849.mp3?filename=deep-meditation-ambient-11883.mp3'
+      },
+      {
+        id: 'acoustic-1',
+        title: 'Morning Sun Acoustic Guitar',
+        category: 'Acoustic Focus',
+        desc: 'Calming fingerstyle guitar for literature & creative tasks',
+        url: 'https://cdn.pixabay.com/download/audio/2022/04/27/audio_67b3096b79.mp3?filename=acoustic-guitars-ambient-111155.mp3'
+      },
+      {
+        id: 'piano-2',
+        title: 'Floating Clouds Piano & Strings',
+        category: 'Study Piano',
+        desc: 'Airy piano swells and ambient strings for exam focus',
+        url: 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_c8b93512b9.mp3?filename=ambient-piano-amp-strings-10711.mp3'
+      },
+      {
+        id: 'zen-1',
+        title: 'Zen Garden Bamboo Flute',
+        category: 'Zen Meditation',
+        desc: 'Peaceful traditional flute and bell chimes for mental serenity',
+        url: 'https://cdn.pixabay.com/download/audio/2022/03/10/audio_c35272a041.mp3?filename=zen-garden-110057.mp3'
+      },
+      {
+        id: 'lofi-5',
+        title: 'Sunset Study Chillhop',
+        category: 'Lo-Fi Chillhop',
+        desc: 'Smooth rhythmic drums with vinyl warmth for steady pace',
+        url: 'https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f7962c.mp3?filename=lofi-chill-124976.mp3'
       }
     ];
 
@@ -94,6 +129,8 @@ class SoundEngine {
   cacheDom() {
     // Bottom dock player elements
     this.btnDockPlay = document.getElementById('btn-sound-toggle');
+    this.btnDockPrev = document.getElementById('btn-dock-prev');
+    this.btnDockNext = document.getElementById('btn-dock-next');
     this.dockTitle = document.getElementById('dock-track-title');
     this.dockCategory = document.getElementById('dock-track-category');
     this.volumeSlider = document.getElementById('sound-volume-slider');
@@ -101,8 +138,9 @@ class SoundEngine {
     this.equalizerBars = document.getElementById('dock-equalizer');
     this.ambientMuteBtn = document.getElementById('btn-ambient-mute');
     this.btnOpenSoundLab = document.getElementById('btn-open-sound-lab');
+    this.btnOpenSoundLabPill = document.getElementById('btn-open-sound-lab-pill');
 
-    // Floating Lab Button
+    // Floating Lab Button & Modal
     this.btnToggleMixer = document.getElementById('btn-toggle-mixer');
     this.soundLabModal = document.getElementById('mixer-modal');
     this.btnCloseLab = document.getElementById('btn-close-mixer');
@@ -120,6 +158,14 @@ class SoundEngine {
     // Dock play/pause
     if (this.btnDockPlay) {
       this.btnDockPlay.addEventListener('click', () => this.togglePrimaryAudio());
+    }
+
+    // Dock skip track controls
+    if (this.btnDockPrev) {
+      this.btnDockPrev.addEventListener('click', () => this.prevMusicTrack());
+    }
+    if (this.btnDockNext) {
+      this.btnDockNext.addEventListener('click', () => this.nextMusicTrack());
     }
 
     // Dock volume slider
@@ -140,6 +186,9 @@ class SoundEngine {
     }
     if (this.btnOpenSoundLab) {
       this.btnOpenSoundLab.addEventListener('click', () => this.openSoundLab());
+    }
+    if (this.btnOpenSoundLabPill) {
+      this.btnOpenSoundLabPill.addEventListener('click', () => this.openSoundLab());
     }
     if (this.btnCloseLab) {
       this.btnCloseLab.addEventListener('click', () => this.closeSoundLab());
@@ -265,7 +314,7 @@ class SoundEngine {
     // Base pitch & target frequency separation
     let baseFreq = 216; // Pure grounding pitch (Hz)
     let beatFreq = 10;  // Alpha default (10 Hz)
-    let label = 'Alpha Waves (10Hz) — Deep Study';
+    let label = 'Alpha Waves (10Hz) — Memory Focus';
 
     if (type === 'alpha') {
       beatFreq = 10; // 10 Hz Alpha for relaxed alertness & memory

@@ -51,17 +51,23 @@ FocusFlow was built and delivered in 3 progressive, feature-packed versions:
 
 The workspace includes a dedicated scientific audio suite engineered specifically for studying, reading, and deep concentration:
 
-* **🎶 Curated Lo-Fi & Study Piano Player**:
-  * *Midnight Study Session* — Mellow Rhodes & boom-bap rhythm for flow state.
-  * *Rain & Nostalgia Lofi* — Soft vinyl texture with relaxing acoustic keys.
-  * *Peaceful Study Piano Solo* — Gentle classical acoustic piano for writing and reading.
-  * *Late Night Coding Grooves* — Downtempo synth pads to prevent cognitive fatigue.
-  * *Coffee Shop Study Session* — Warm acoustic guitar and cozy cafe vibes.
+* **🎶 Curated 10 Focus & Study Music Tracks**:
+  1. *Midnight Study Session* — Mellow Rhodes & boom-bap rhythm for flow state.
+  2. *Rain & Nostalgia Lofi* — Soft vinyl texture with relaxing acoustic keys.
+  3. *Peaceful Study Piano Solo* — Gentle classical acoustic piano for writing and reading.
+  4. *Late Night Coding Grooves* — Downtempo synth pads to prevent cognitive fatigue.
+  5. *Coffee Shop Study Session* — Warm acoustic guitar and cozy cafe vibes.
+  6. *Deep Cosmos Meditation & Flow* — Ethereal cosmic ambient pads for deep logic.
+  7. *Morning Sun Acoustic Guitar* — Calming fingerstyle guitar for literature tasks.
+  8. *Floating Clouds Piano & Strings* — Airy piano swells and ambient strings for exam focus.
+  9. *Zen Garden Bamboo Flute* — Traditional flute and bells for mental serenity.
+  10. *Sunset Study Chillhop* — Smooth rhythmic drums with vinyl warmth.
 * **🧠 Scientific Binaural Beats Synthesizer (Web Audio API)**:
   * **Alpha Waves (10 Hz)** — Relaxed alertness, optimal memory consolidation & reading comprehension.
   * **Beta Waves (18 Hz)** — High focus, complex logic, mathematics, coding, and problem-solving.
   * **Theta Waves (6 Hz)** — Deep flow state, creative brainstorms, writing, and anxiety relief.
   * **528 Hz Solfeggio Tone** — Harmonic clarity frequency for clearing mental fog.
+* **⏭️ Quick Track Skip Controls**: Dedicated Previous and Next buttons directly on the bottom dock for effortless song switching.
 * **📊 Animated Audio Equalizer**: Dynamic 4-bar glowing purple visualizer dancing in the dock player whenever audio is active.
 * **🌿 Layered Multi-Track Mixing**: Blend background ambient sounds (Brown Noise, Window Rain, Fireplace Crackle) concurrently on top of your study music!
 
