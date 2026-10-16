@@ -1844,3 +1844,34 @@ input:checked + .slider.round:before {
   flex-direction: column;
   gap: 0.75rem;
 }
+
+/* ===================================================================
+   Ultra-Transparent Crystal Glass Center Timer Card
+   =================================================================== */
+.timer-container {
+  background: rgba(14, 12, 20, 0.18) !important;
+  backdrop-filter: blur(12px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.45),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+              inset 0 0 20px 0 rgba(255, 255, 255, 0.02) !important;
+}
+
+.timer-container::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 80%) !important;
+}
+
+.mode-switcher {
+  background: rgba(10, 10, 15, 0.3) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.active-task-pill {
+  background: rgba(168, 85, 247, 0.1) !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+}
