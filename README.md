@@ -8,10 +8,25 @@
 
 The workspace is inspired by cozy, sunlit classical libraries and aesthetic virtual study spaces:
 
-![FocusFlow Workspace Preview](https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80)
+![FocusFlow Workspace Preview](assets/app-preview.png)
 
 * **Cinematic Backdrop**: Warm sunlight streaming through vintage arched library windows with subtle floating dust particles.
 * **Glassmorphism Aesthetic**: Frosted glass cards with translucent dark layers (`backdrop-filter: blur(20px)`), subtle glowing borders, and vibrant purple highlights (`#a855f7`).
+
+---
+
+## 📸 Version Push Screenshots (Git Terminal Evidence)
+
+Here are the terminal verification screenshots showing incremental release commits pushed to GitHub:
+
+### 🟢 Version 1: Core Timer
+![Version 1 Terminal Push](assets/terminal-v1.png)
+
+### 🟡 Version 2: Music & Task List
+![Version 2 Terminal Push](assets/terminal-v2.png)
+
+### 🟣 Version 3: Study Statistics & Dashboard
+![Version 3 Terminal Push](assets/terminal-v3.png)
 
 ---
 
