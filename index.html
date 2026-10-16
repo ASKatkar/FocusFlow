@@ -46,14 +46,12 @@
           </svg>
           <span>Solo Study</span>
         </button>
-        <button class="nav-tab" id="tab-rooms" title="Virtual Rooms">
+        <button class="nav-tab" id="tab-tasks-nav" title="Tasks">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
           </svg>
-          <span>Rooms</span>
+          <span>Tasks</span>
         </button>
       </nav>
 
@@ -78,7 +76,7 @@
       </div>
     </header>
 
-    <!-- Center Stage: Pomodoro Timer -->
+    <!-- Center Stage: Pomodoro Timer & Active Focus -->
     <main class="center-stage">
       <div class="timer-container glass-card">
         
@@ -118,6 +116,12 @@
             <h1 class="timer-digits" id="time-display">25:00</h1>
             <p class="timer-status" id="timer-status">FOCUSING</p>
           </div>
+        </div>
+
+        <!-- Active Task Pill (V2 Feature) -->
+        <div class="active-task-pill" id="active-task-pill" title="Click to open task list">
+          <span class="task-indicator-dot"></span>
+          <span class="active-task-label" id="active-task-label">Focusing on: Complete Chapter 4 reading</span>
         </div>
 
         <!-- Timer Action Controls -->
@@ -172,7 +176,7 @@
           <span class="sound-status-badge" id="sound-status-badge">Off</span>
         </div>
         <div class="sound-control-row">
-          <button class="dock-btn-icon" id="btn-sound-toggle" title="Toggle Sound">
+          <button class="dock-btn-icon" id="btn-sound-toggle" title="Toggle Brown Noise">
             <svg id="sound-icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="1" y1="1" x2="23" y2="23"></line>
               <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
@@ -260,15 +264,31 @@
 
     </footer>
 
-    <!-- Floating Dock Action Buttons -->
+    <!-- Floating Action Buttons -->
     <div class="floating-controls">
-      <button class="floating-btn" id="btn-ambient-mute" title="Mute Ambient Sounds">
+      <button class="floating-btn" id="btn-toggle-tasks" title="Study Tasks & Checklist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <span class="floating-badge" id="task-count-badge">2</span>
+      </button>
+
+      <button class="floating-btn" id="btn-toggle-mixer" title="Soundscapes & Ambient Mixer">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         </svg>
       </button>
+
+      <button class="floating-btn" id="btn-ambient-mute" title="Master Mute (Audio)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+      
       <button class="floating-btn" id="btn-screen-expand" title="Toggle Fullscreen">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="15 3 21 3 21 9"></polyline>
@@ -279,6 +299,110 @@
       </button>
     </div>
 
+  </div>
+
+  <!-- Slide-out Focus Tasks Drawer (V2) -->
+  <aside class="tasks-drawer glass-card" id="tasks-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <h3>Focus Tasks</h3>
+      </div>
+      <button class="icon-button" id="btn-close-tasks">&times;</button>
+    </div>
+
+    <!-- Task Input Form -->
+    <div class="task-input-row">
+      <input type="text" id="input-new-task" placeholder="Add a study goal or task..." maxlength="80">
+      <button class="btn-add-task" id="btn-add-task">+</button>
+    </div>
+
+    <!-- Task Filters -->
+    <div class="task-filters">
+      <button class="task-filter-btn active" data-filter="all">All</button>
+      <button class="task-filter-btn" data-filter="active">Active</button>
+      <button class="task-filter-btn" data-filter="completed">Done</button>
+    </div>
+
+    <!-- Task Items List -->
+    <div class="tasks-list" id="tasks-list">
+      <!-- Rendered dynamically by tasks.js -->
+    </div>
+  </aside>
+
+  <!-- Multi-track Soundscapes Mixer Modal (V2) -->
+  <div class="modal-backdrop hidden" id="mixer-modal">
+    <div class="modal-card glass-card mixer-card">
+      <div class="modal-header">
+        <div class="drawer-title-group">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+          <h3>Ambient Soundscapes & Mixer</h3>
+        </div>
+        <button class="icon-button modal-close" id="btn-close-mixer">&times;</button>
+      </div>
+
+      <div class="mixer-body">
+        
+        <!-- Track 1: Brown Noise -->
+        <div class="mixer-track">
+          <div class="mixer-track-info">
+            <span class="mixer-track-name">🌊 Deep Brown Noise</span>
+            <label class="switch">
+              <input type="checkbox" class="mixer-track-toggle" data-track="brown">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <input type="range" class="mixer-volume-slider custom-slider" data-track="brown" min="0" max="100" value="50">
+        </div>
+
+        <!-- Track 2: Gentle Rain -->
+        <div class="mixer-track">
+          <div class="mixer-track-info">
+            <span class="mixer-track-name">🌧️ Rainy Windowpane</span>
+            <label class="switch">
+              <input type="checkbox" class="mixer-track-toggle" data-track="rain">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <input type="range" class="mixer-volume-slider custom-slider" data-track="rain" min="0" max="100" value="40">
+        </div>
+
+        <!-- Track 3: White Noise -->
+        <div class="mixer-track">
+          <div class="mixer-track-info">
+            <span class="mixer-track-name">💨 Pure White Noise</span>
+            <label class="switch">
+              <input type="checkbox" class="mixer-track-toggle" data-track="white">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <input type="range" class="mixer-volume-slider custom-slider" data-track="white" min="0" max="100" value="30">
+        </div>
+
+        <!-- Track 4: Lofi Chillhop Beats -->
+        <div class="mixer-track lofi-track-card">
+          <div class="mixer-track-info">
+            <div class="lofi-title-box">
+              <span class="mixer-track-name">☕ Lofi Beats Player</span>
+              <p class="lofi-track-sub" id="lofi-track-title">Chillhop Beats — Midnight Study</p>
+            </div>
+            <div class="lofi-actions">
+              <button class="btn-lofi-ctrl" id="btn-lofi-play">Play</button>
+              <button class="btn-lofi-ctrl" id="btn-lofi-next" title="Next Song">⏭</button>
+            </div>
+          </div>
+          <input type="range" class="mixer-volume-slider custom-slider" data-track="lofi" min="0" max="100" value="50">
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- Settings / Customize Modal -->
@@ -316,6 +440,7 @@
   <!-- Scripts -->
   <script src="js/particles.js"></script>
   <script src="js/audio.js"></script>
+  <script src="js/tasks.js"></script>
   <script src="js/timer.js"></script>
 </body>
 </html>

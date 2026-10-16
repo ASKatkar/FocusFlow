@@ -17,40 +17,46 @@ FocusFlow is built incrementally across three distinct milestone versions:
 | Version | Status | Focus Areas |
 | :--- | :--- | :--- |
 | **`v1.0.0`** | **✅ Released** | **Core Timer & Glassmorphic Workspace** (Pomodoro state machine, circular SVG dial, cozy library room, Web Audio chime alerts, customizable settings modal) |
-| **`v2.0.0`** | **⏳ Next** | **Ambient Soundscapes & Focus Tasks** (Procedural Brown/White/Pink noise, rain & cafe audio layers, environment theme switcher, integrated task checklist) |
-| **`v3.0.0`** | **⏳ Planned** | **Study Analytics & Gamification** (Daily study streak, historical session logs, productivity charts, level-up XP system) |
+| **`v2.0.0`** | **✅ Released** | **Ambient Soundscapes & Focus Tasks** (Multi-track mixer, procedural Brown/White/Rain noise, Lofi Beats player, interactive tasks drawer, active focus pin) |
+| **`v3.0.0`** | **⏳ Next** | **Study Analytics & Gamification** (Daily study streak, historical session logs, productivity charts, level-up XP system) |
 
 ---
 
-## 🌟 Version 1.0.0 Features
+## 🎧 What's New in Version 2.0.0
 
-### 1. ⏱️ Pomodoro Timer Engine
-* **Three Dedicated Modes**:
-  * **Focus**: Default 25 minutes of uninterrupted work.
-  * **Short Break**: 5-minute breather between study cycles.
-  * **Long Break**: 15-minute restorative rest after completing 4 consecutive focus sessions.
-* **Animated Circular Progress Dial**: Smooth SVG ring tracking elapsed time with dynamic glowing purple accent.
-* **Session Cycle Dots**: Visual indicator of progress through the standard 4-block Pomodoro cycle.
-* **Browser Tab Updates**: Real-time timer countdown in document title `(24:59) Focus — FocusFlow`.
+### 1. 📋 Interactive Focus Tasks & Checklist
+* **Slide-out Tasks Drawer**: Frosted glass side panel accessible from the top navbar or the floating action button.
+* **Active Focus Pinning**: Mark any task with the star icon to pin it directly under the countdown timer (`Focusing on: ...`).
+* **Filters & Counter**: Filter by All, Active, or Completed tasks with a real-time pending badge counter.
+* **Local Persistence**: Tasks and active focus selection remain saved across browser reloads via `localStorage`.
 
-### 2. 🪟 Atmospheric Glassmorphism Design
-* **Cinematic Backdrop**: Cozy vintage library scene with warm sunlight streaming through arched windows.
-* **Ambient Floating Particles**: Gentle dust motes floating through sunbeams powered by an optimized HTML5 Canvas.
-* **Frosted Glass Cards**: Sleek translucent dark cards with modern backdrop-blur and glowing borders.
+### 2. 🎶 Multi-Track Ambient Soundscapes & Lofi Player
+* **Procedural Sound Generators**:
+  * **Brown Noise**: Deep low-frequency rumble for masking distractions.
+  * **White Noise**: Soft waterfall white noise.
+  * **Rainy Windowpane**: Organic rain droplets hitting glass using dynamic bandpass filtering.
+* **Lofi Chillhop Beats Player**: Stream atmospheric background study lo-fi beats with Play/Pause and Next Song controls.
+* **Multi-Track Mixer Modal**: Blend volume levels for multiple ambient sound layers simultaneously.
+* **Master Mute**: One-click instant audio silencer.
 
-### 3. 🔔 Audio & Alerts
-* **Procedural Singing Bowl Chime**: Built using the Web Audio API with zero external audio assets. Plays a soothing harmonic alert when sessions finish.
-* **Brown Noise Engine**: High-fidelity procedural Brownian noise generator to mask room distractions.
+### 3. 🖼️ Multi-Scene Environment Switcher
+* Switch between 6 cozy high-resolution study environments with smooth visual transitions:
+  1. 📚 **Old Library** (Default)
+  2. 🌧️ **Rainy Window**
+  3. ☕ **Night Cafe**
+  4. 🛏️ **Lofi Bedroom**
+  5. 🌲 **Mystic Forest**
+  6. 🌌 **Deep Space**
 
-### 4. ⚙️ Customization & Presets
-* **Custom Durations**: Adjust Focus, Short Break, and Long Break lengths from 1 to 120 minutes.
-* **Auto-Start Cycles**: Optional automatic progression between focus and break periods.
-* **Persistent Settings**: Configuration auto-saved to browser `localStorage`.
+---
 
-### 5. ⌨️ Keyboard Shortcuts
-* <kbd>Space</kbd> — Start / Pause timer
-* <kbd>R</kbd> — Reset current session
-* <kbd>F</kbd> — Toggle Fullscreen mode
+## 🌟 Version 1.0.0 Features (Recap)
+
+* **Pomodoro Timer**: Focus (25m), Short Break (5m), and Long Break (15m).
+* **SVG Circular Ring**: Fluid progress dial with glowing purple accent.
+* **Tibetan Singing Bowl Alert**: Gentle harmonic audio chime synthesized via Web Audio API.
+* **Glassmorphism Design**: Frosted glass cards, glowing borders, and floating dust particle canvas.
+* **Keyboard Shortcuts**: <kbd>Space</kbd> (Play/Pause), <kbd>R</kbd> (Reset), <kbd>F</kbd> (Fullscreen).
 
 ---
 
@@ -58,15 +64,16 @@ FocusFlow is built incrementally across three distinct milestone versions:
 
 ```text
 FocusFlow/
-├── index.html           # Core HTML5 layout & semantic structure
+├── index.html           # Semantic HTML5 layout & responsive UI
 ├── css/
-│   └── styles.css       # Glassmorphism design system & responsive styling
+│   └── styles.css       # Glassmorphism design system & V1/V2/V3 styles
 ├── js/
-│   ├── timer.js         # Pomodoro state machine & dial rendering
-│   ├── audio.js         # Web Audio API sound engine & chime synthesizer
-│   └── particles.js     # Canvas dust motes particle animation
+│   ├── timer.js         # Pomodoro state machine & SVG dial animations
+│   ├── audio.js         # Multi-track procedural audio & lofi engine
+│   ├── tasks.js         # Focus task checklist & active task pinning
+│   └── particles.js     # Ambient dust motes particle animation
 ├── assets/              # Icons and graphics
-└── README.md            # Comprehensive project documentation
+└── README.md            # Master project documentation & changelog
 ```
 
 ---
@@ -75,21 +82,21 @@ FocusFlow/
 
 Because FocusFlow is built using modern native web standards, **no build tools or node_modules are required**:
 
-1. Clone or open the project folder:
+1. Open the project folder:
    ```bash
    cd "C:\Users\vaish\Documents\AK_atharav\MY Projects\Antigravity_Project\FocusFlow"
    ```
-2. Double-click `index.html` or open it with any modern web browser (Chrome, Edge, Firefox, Safari).
-3. Alternatively, launch with VS Code's **Live Server** extension or run a quick local server:
+2. Double-click `index.html` to open directly in any modern web browser.
+3. Or serve locally with Python:
    ```bash
    python -m http.server 8000
    ```
-   and navigate to `http://localhost:8000`.
+   and visit `http://localhost:8000`.
 
 ---
 
 ## 🌿 Git Milestones
 
 * **`v1.0.0`**: Initial release — Complete Pomodoro timer, ambient library UI, Web Audio chimes, and settings modal.
-* **`v2.0.0`**: Ambient sound mixer, environment switcher, and to-do task list.
+* **`v2.0.0`**: Ambient sound mixer, procedural noise, Lofi beats, environment switcher, and to-do task list.
 * **`v3.0.0`**: Productivity stats dashboard, history logs, and level gamification.

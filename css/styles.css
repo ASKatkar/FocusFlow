@@ -863,3 +863,410 @@ body.theme-space .background-overlay {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ===================================================================
+   Version 2: Focus Task List & Ambient Soundscapes Mixer Styles
+   =================================================================== */
+
+/* Active Focus Task Pill (Below Timer) */
+.active-task-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  margin-top: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  max-width: 90%;
+}
+
+.active-task-pill:hover {
+  background: rgba(168, 85, 247, 0.25);
+  transform: translateY(-1px);
+}
+
+.task-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  flex-shrink: 0;
+}
+
+.active-task-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Floating Action Badge */
+.floating-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
+}
+
+/* Slide-out Focus Tasks Drawer */
+.tasks-drawer {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 360px;
+  max-width: 90vw;
+  z-index: 90;
+  background: rgba(18, 18, 25, 0.88);
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+  transform: translateX(115%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.tasks-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.drawer-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+}
+
+.drawer-title-group h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Task Input Row */
+.task-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.task-input-row input {
+  flex: 1;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: rgba(10, 10, 14, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.task-input-row input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.btn-add-task {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-add-task:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+}
+
+/* Task Filters */
+.task-filters {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  background: rgba(10, 10, 14, 0.4);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+.task-filter-btn {
+  flex: 1;
+  padding: 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.task-filter-btn:hover {
+  color: #fff;
+}
+
+.task-filter-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Task Items List */
+.tasks-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding-right: 0.2rem;
+}
+
+.tasks-list::-webkit-scrollbar {
+  width: 4px;
+}
+.tasks-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: var(--transition-smooth);
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.task-item.is-active-target {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.task-checkbox-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.task-checkbox {
+  accent-color: var(--accent-primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.task-pin-btn, .task-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.task-pin-btn:hover {
+  color: #fbbf24;
+}
+
+.task-pin-btn.active {
+  color: #fbbf24;
+}
+
+.task-delete-btn:hover {
+  color: #f87171;
+}
+
+.tasks-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  color: var(--text-dim);
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+/* ---------------- Multi-Track Mixer Modal ---------------- */
+.mixer-card {
+  width: 440px;
+  max-width: 95vw;
+}
+
+.mixer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.mixer-track {
+  background: rgba(10, 10, 15, 0.5);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mixer-track-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.mixer-track-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider.round {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider.round {
+  background-color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+}
+
+input:checked + .slider.round:before {
+  transform: translateX(18px);
+}
+
+/* Lofi Card inside Mixer */
+.lofi-track-card {
+  background: linear-gradient(135deg, rgba(20, 15, 30, 0.7) 0%, rgba(35, 20, 50, 0.6) 100%);
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+.lofi-title-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lofi-track-sub {
+  font-size: 0.72rem;
+  color: #c084fc;
+}
+
+.lofi-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-lofi-ctrl {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-lofi-ctrl:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
