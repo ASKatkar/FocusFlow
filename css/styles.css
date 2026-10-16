@@ -1875,3 +1875,97 @@ input:checked + .slider.round:before {
   background: rgba(168, 85, 247, 0.1) !important;
   border: 1px solid rgba(168, 85, 247, 0.25) !important;
 }
+
+/* ===================================================================
+   Compact Minimalist Timer (Maximizes Background Visibility)
+   =================================================================== */
+.timer-container {
+  width: 280px !important;
+  padding: 1rem 1.35rem 0.85rem !important;
+  border-radius: 20px !important;
+}
+
+.mode-switcher {
+  padding: 0.22rem !important;
+  margin-bottom: 0.75rem !important;
+  gap: 0.15rem !important;
+}
+
+.mode-pill {
+  font-size: 0.68rem !important;
+  padding: 0.28rem 0.62rem !important;
+  gap: 0.25rem !important;
+}
+
+.mode-pill svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.timer-dial-wrapper {
+  width: 175px !important;
+  height: 175px !important;
+}
+
+.timer-ring-svg circle {
+  stroke-width: 5 !important;
+}
+
+.timer-digits {
+  font-size: 2.45rem !important;
+  letter-spacing: -0.5px !important;
+}
+
+.timer-status {
+  font-size: 0.65rem !important;
+  letter-spacing: 3px !important;
+  margin-top: 0.3rem !important;
+}
+
+.active-task-pill {
+  margin-top: 0.65rem !important;
+  padding: 0.24rem 0.75rem !important;
+}
+
+.active-task-label {
+  font-size: 0.68rem !important;
+}
+
+.timer-actions {
+  margin-top: 0.9rem !important;
+  gap: 0.8rem !important;
+}
+
+.circle-btn.primary {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.circle-btn.primary svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.circle-btn.secondary {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.circle-btn.secondary svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.session-dots {
+  margin-top: 0.75rem !important;
+  gap: 0.35rem !important;
+}
+
+.session-dots .dot {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.session-dots .dot.active {
+  width: 12px !important;
+}
