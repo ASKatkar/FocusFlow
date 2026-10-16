@@ -96,6 +96,16 @@ class PomodoroTimer {
     if (this.btnFullscreen) this.btnFullscreen.addEventListener('click', () => this.toggleFullscreen());
     if (this.btnScreenExpand) this.btnScreenExpand.addEventListener('click', () => this.toggleFullscreen());
 
+    // Tab Solo returns to main view
+    const tabSolo = document.getElementById('tab-solo');
+    if (tabSolo) {
+      tabSolo.addEventListener('click', () => {
+        document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.add('hidden'));
+        const drawer = document.getElementById('tasks-drawer');
+        if (drawer) drawer.classList.remove('open');
+      });
+    }
+
     // Modal Events
     if (this.btnCustomize) this.btnCustomize.addEventListener('click', () => this.openSettings());
     if (this.btnCloseModal) this.btnCloseModal.addEventListener('click', () => this.closeSettings());
@@ -197,6 +207,13 @@ class PomodoroTimer {
     if (this.currentMode === 'focus') {
       this.totalCompletedSessions++;
       this.sessionCycle++;
+
+      // Log session in stats engine
+      if (window.statsEngine) {
+        const activeTask = window.taskManager ? window.taskManager.getActiveTask() : null;
+        const taskTitle = activeTask ? activeTask.title : 'General Study';
+        window.statsEngine.recordSession(this.durations.focus, taskTitle);
+      }
 
       // After 4 focus cycles, recommend long break
       if (this.sessionCycle > 4) {

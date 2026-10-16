@@ -437,10 +437,87 @@
     </div>
   </div>
 
+  <!-- Study Statistics & Session History Dashboard Modal (V3) -->
+  <div class="modal-backdrop hidden" id="dashboard-modal">
+    <div class="modal-card glass-card dashboard-modal-card">
+      <div class="modal-header">
+        <div class="drawer-title-group">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <h3>Productivity Dashboard</h3>
+        </div>
+        <button class="icon-button modal-close" id="btn-close-dashboard">&times;</button>
+      </div>
+
+      <div class="dashboard-body">
+        
+        <!-- Key Metrics Cards -->
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="metric-icon">🔥</span>
+            <div class="metric-details">
+              <span class="metric-label">Study Streak</span>
+              <strong class="metric-num" id="stat-streak-days">1 Day</strong>
+            </div>
+          </div>
+          <div class="metric-box">
+            <span class="metric-icon">⏱️</span>
+            <div class="metric-details">
+              <span class="metric-label">Today's Focus</span>
+              <strong class="metric-num" id="stat-today-minutes">25m</strong>
+            </div>
+          </div>
+          <div class="metric-box">
+            <span class="metric-icon">📈</span>
+            <div class="metric-details">
+              <span class="metric-label">Total Focus</span>
+              <strong class="metric-num" id="stat-total-minutes">125m</strong>
+            </div>
+          </div>
+          <div class="metric-box">
+            <span class="metric-icon">🎯</span>
+            <div class="metric-details">
+              <span class="metric-label">Sessions Done</span>
+              <strong class="metric-num" id="stat-completed-count">4</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Focus Activity Chart -->
+        <div class="dashboard-section">
+          <div class="section-title-row">
+            <h4>Weekly Study Activity</h4>
+            <span class="section-subtitle">Minutes per day</span>
+          </div>
+          <div class="weekly-chart" id="weekly-chart-bars">
+            <!-- Rendered dynamically by stats.js -->
+          </div>
+        </div>
+
+        <!-- Session History List -->
+        <div class="dashboard-section">
+          <div class="section-title-row">
+            <h4>Recent Study Sessions</h4>
+            <button class="btn-text-danger" id="btn-clear-history">Clear History</button>
+          </div>
+          <div class="history-list-box" id="session-history-list">
+            <!-- Rendered dynamically by stats.js -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/particles.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/tasks.js"></script>
+  <script src="js/stats.js"></script>
   <script src="js/timer.js"></script>
 </body>
 </html>
