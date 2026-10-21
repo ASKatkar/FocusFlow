@@ -1991,3 +1991,546 @@ input:checked + .slider.round:before {
   color: #fff;
   transform: scale(1.08);
 }
+
+
+/* ==========================================================================
+   FocusFlow v4.0.0 - Virtual Study Rooms & Focus Scratchpad Styles
+   ========================================================================== */
+
+/* Top Nav Live Badge */
+.live-pulse-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.floating-badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a855f7;
+  box-shadow: 0 0 8px #c084fc;
+}
+
+/* Slide-out Focus Scratchpad Drawer */
+.notes-drawer {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 380px;
+  max-width: 92vw;
+  z-index: 92;
+  background: rgba(14, 14, 24, 0.94);
+  backdrop-filter: blur(32px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  transform: translateX(120%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: -12px 0 45px rgba(0, 0, 0, 0.75);
+}
+
+.notes-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.notes-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tool-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.tool-btn-danger:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.notes-editor-container {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  margin-bottom: 0.8rem;
+}
+
+.notes-textarea {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: #e2e8f0;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  padding: 0.85rem;
+  resize: none;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.notes-textarea:focus {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
+}
+
+.notes-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
+
+.notes-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.notes-sep {
+  opacity: 0.4;
+}
+
+.save-status-text {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.save-status-text.saving {
+  color: #fbbf24;
+}
+
+/* ==========================================================================
+   Virtual Study Rooms Modal Styling
+   ========================================================================== */
+
+.rooms-modal-card {
+  max-width: 960px;
+  width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rooms-modal-body {
+  overflow-y: auto;
+  padding-right: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.rooms-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.live-counter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  color: #34d399;
+  font-weight: 600;
+}
+
+.pulsing-green-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #34d399;
+  animation: pulseGreen 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
+}
+
+.rooms-channel-section h4,
+.study-buddies-section h4 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.9rem;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.room-channel-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.room-channel-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.room-channel-card.active {
+  border-color: rgba(99, 102, 241, 0.65);
+  background: rgba(99, 102, 241, 0.08);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
+}
+
+.room-card-banner {
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.banner-library {
+  background: linear-gradient(135deg, rgba(146, 64, 14, 0.55), rgba(77, 124, 15, 0.4));
+}
+
+.banner-cafe {
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.55), rgba(190, 24, 93, 0.4));
+}
+
+.banner-night-city {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(88, 28, 135, 0.55));
+}
+
+.banner-starry {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.85), rgba(6, 78, 59, 0.55));
+}
+
+.room-channel-badge {
+  font-size: 0.82rem;
+  color: #fff;
+}
+
+.room-user-badge {
+  font-size: 0.72rem;
+  color: #34d399;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+}
+
+.room-channel-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.room-channel-info h5 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.room-channel-info p {
+  font-size: 0.77rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.8rem;
+  flex: 1;
+}
+
+.room-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.room-tags .tag {
+  font-size: 0.68rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  color: var(--text-secondary);
+}
+
+.btn-join-room {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-join-room:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btn-join-room.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: #a5b4fc;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Study Buddies Wall */
+.buddies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+}
+
+.buddy-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: var(--transition-fast);
+}
+
+.buddy-card:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.buddy-card.in-room {
+  border-left: 3px solid #6366f1;
+}
+
+.buddy-top {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.buddy-avatar {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.buddy-flag {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  font-size: 0.72rem;
+}
+
+.buddy-meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.buddy-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.buddy-name {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buddy-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.buddy-badge.badge-you {
+  background: rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.buddy-room-tag {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.buddy-task-box {
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+}
+
+.buddy-task-text {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.buddy-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buddy-status-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.buddy-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.buddy-status.status-focus {
+  color: #34d399;
+}
+
+.buddy-status.status-break {
+  color: #fbbf24;
+}
+
+.buddy-streak {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.btn-cheer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 0.3rem 0.65rem;
+  color: #e2e8f0;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-cheer:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.06);
+}
+
+.cheer-bump {
+  animation: cheerPop 0.35s ease-out;
+}
+
+@keyframes cheerPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+
+/* Floating Toast Notification */
+.focusflow-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focusflow-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+

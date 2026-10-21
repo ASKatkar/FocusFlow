@@ -108,6 +108,12 @@ class TaskManager {
   }
 
   openDrawer() {
+    const notesDrawer = document.getElementById('notes-drawer');
+    if (notesDrawer && notesDrawer.classList.contains('open')) {
+      notesDrawer.classList.remove('open');
+      const btnNotes = document.getElementById('btn-toggle-notes');
+      if (btnNotes) btnNotes.classList.remove('active');
+    }
     this.drawer.classList.add('open');
     if (this.inputNewTask) this.inputNewTask.focus();
   }

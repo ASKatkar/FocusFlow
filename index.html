@@ -39,6 +39,16 @@
           </svg>
           <span>Dashboard</span>
         </button>
+        <button class="nav-tab" id="tab-rooms" title="Virtual Study Rooms & Peers (V4)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Study Rooms</span>
+          <span class="live-pulse-badge">113</span>
+        </button>
         <button class="nav-tab active" id="tab-solo">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
@@ -278,6 +288,14 @@
 
     <!-- Floating Action Buttons -->
     <div class="floating-controls">
+      <button class="floating-btn" id="btn-toggle-notes" title="Focus Scratchpad & Notes (V4)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        <span class="floating-badge-dot"></span>
+      </button>
+
       <button class="floating-btn" id="btn-toggle-tasks" title="Study Tasks & Checklist">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 11l3 3L22 4"></path>
@@ -342,6 +360,49 @@
     <!-- Task Items List -->
     <div class="tasks-list" id="tasks-list">
       <!-- Rendered dynamically by tasks.js -->
+    </div>
+  </aside>
+
+  <!-- Slide-out Focus Scratchpad / Quick Notes Drawer (V4) -->
+  <aside class="notes-drawer glass-card" id="notes-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        <h3>Focus Scratchpad</h3>
+      </div>
+      <div class="drawer-actions">
+        <button class="icon-button" id="btn-export-notes" title="Export / Copy Notes">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+        <button class="icon-button" id="btn-close-notes">&times;</button>
+      </div>
+    </div>
+
+    <div class="notes-toolbar">
+      <button class="tool-btn" data-action="bold" title="Insert Bold formatting"><strong>B</strong></button>
+      <button class="tool-btn" data-action="bullet" title="Insert Bullet item">• List</button>
+      <button class="tool-btn" data-action="todo" title="Insert Checkbox item">☑ Todo</button>
+      <button class="tool-btn" data-action="timestamp" title="Insert Current Timestamp">⏱ Time</button>
+      <button class="tool-btn tool-btn-danger" data-action="clear" title="Clear Scratchpad">Clear</button>
+    </div>
+
+    <div class="notes-editor-container">
+      <textarea id="notes-content" class="notes-textarea" placeholder="Jot down quick thoughts, formulas, lecture key points, or sudden questions while studying..."></textarea>
+    </div>
+
+    <div class="notes-footer">
+      <div class="notes-stats">
+        <span id="notes-word-count">0 words</span>
+        <span class="notes-sep">•</span>
+        <span id="notes-char-count">0 chars</span>
+      </div>
+      <span class="save-status-text" id="notes-save-status">Saved</span>
     </div>
   </aside>
 
@@ -579,11 +640,125 @@
     </div>
   </div>
 
+  <!-- Virtual Study Rooms & Peer Presence Modal (V4) -->
+  <div class="modal-backdrop hidden" id="rooms-modal">
+    <div class="modal-card glass-card rooms-modal-card">
+      <div class="modal-header">
+        <div class="drawer-title-group">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <div>
+            <h3>Virtual Study Rooms</h3>
+            <span class="modal-subtitle">Study synchronously alongside global peers</span>
+          </div>
+        </div>
+        <div class="rooms-header-right">
+          <div class="live-counter-pill">
+            <span class="pulsing-green-dot"></span>
+            <span id="active-peers-count">113 Peers Studying Now</span>
+          </div>
+          <button class="icon-button modal-close" id="btn-close-rooms">&times;</button>
+        </div>
+      </div>
+
+      <div class="rooms-modal-body">
+        <div class="rooms-channel-section">
+          <h4>Select Study Channel</h4>
+          <div class="rooms-grid">
+            <div class="room-channel-card active" data-room-id="library">
+              <div class="room-card-banner banner-library">
+                <span class="room-channel-badge">🏛️ Oxford Library</span>
+                <span class="room-user-badge">🟢 42 Online</span>
+              </div>
+              <div class="room-channel-info">
+                <h5>Silent University Hall</h5>
+                <p>Strict silence, solemn library grandeur, soft turn of pages & distant rain.</p>
+                <div class="room-tags">
+                  <span class="tag">#ExamPrep</span>
+                  <span class="tag">#DeepReading</span>
+                  <span class="tag">#NoDistractions</span>
+                </div>
+                <button class="btn-join-room active" data-room-id="library">Current Room</button>
+              </div>
+            </div>
+
+            <div class="room-channel-card" data-room-id="cafe">
+              <div class="room-card-banner banner-cafe">
+                <span class="room-channel-badge">☕ Shibuya Café</span>
+                <span class="room-user-badge">🟢 35 Online</span>
+              </div>
+              <div class="room-channel-info">
+                <h5>Midnight Coffee Lounge</h5>
+                <p>Warm espresso chatter, gentle porcelain clinks, and soothing lofi jazz.</p>
+                <div class="room-tags">
+                  <span class="tag">#CreativeFlow</span>
+                  <span class="tag">#EssayWriting</span>
+                  <span class="tag">#CozyVibes</span>
+                </div>
+                <button class="btn-join-room" data-room-id="cafe">Join Room</button>
+              </div>
+            </div>
+
+            <div class="room-channel-card" data-room-id="night-city">
+              <div class="room-card-banner banner-night-city">
+                <span class="room-channel-badge">💻 Tech District</span>
+                <span class="room-user-badge">🟢 24 Online</span>
+              </div>
+              <div class="room-channel-info">
+                <h5>Late-Night Code Lab</h5>
+                <p>Mechanical keystrokes, synthwave hum, and rapid engineering focus.</p>
+                <div class="room-tags">
+                  <span class="tag">#Coding</span>
+                  <span class="tag">#ProblemSolving</span>
+                  <span class="tag">#Hackathon</span>
+                </div>
+                <button class="btn-join-room" data-room-id="night-city">Join Room</button>
+              </div>
+            </div>
+
+            <div class="room-channel-card" data-room-id="starry">
+              <div class="room-card-banner banner-starry">
+                <span class="room-channel-badge">🌌 Deep Space</span>
+                <span class="room-user-badge">🟢 12 Online</span>
+              </div>
+              <div class="room-channel-info">
+                <h5>Cosmic Observatory</h5>
+                <p>Floating stellar nebulas, soothing binaural cosmic frequencies, absolute zen.</p>
+                <div class="room-tags">
+                  <span class="tag">#ZenMeditation</span>
+                  <span class="tag">#QuantumMath</span>
+                  <span class="tag">#Philosophy</span>
+                </div>
+                <button class="btn-join-room" data-room-id="starry">Join Room</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="study-buddies-section">
+          <div class="section-title-row">
+            <h4>Live Study Peers in This Room</h4>
+            <span class="section-subtitle">Send encouragement to fellow students</span>
+          </div>
+
+          <div class="buddies-grid" id="buddies-grid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/particles.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/tasks.js"></script>
   <script src="js/stats.js"></script>
+  <script src="js/rooms.js"></script>
+  <script src="js/notes.js"></script>
   <script src="js/timer.js"></script>
 </body>
 </html>
